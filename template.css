@@ -1,0 +1,10 @@
+#sitename {
+    font-size: 3em;
+    color: teal;
+}
+
+.container {
+    margin: auto;
+    width: 100%;
+    max-width: 800px;
+}
