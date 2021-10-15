@@ -66,7 +66,7 @@ function is_taishou(r) {
 
 function r_disp(r, num) {
     var display = document.getElementsByTagName('body');
-    var fin = document.createElement('div');
+    var fin = document.createElement('p');
     fin.className = 'tmp';
     var tbl = document.createElement('table');
     var tblBody = document.createElement('tbody');
@@ -80,14 +80,16 @@ function r_disp(r, num) {
                 } else if (j == 1) {
                     var cellText = document.createTextNode("");
                 } else {
-                    var cellText = document.createTextNode(String.fromCharCode(95 + j));
+                    var cellText = document.createTextNode(" " + String.fromCharCode(95 + j) + " ");
                 }
             } else if (i != 0 && j == 1) {
                 var cellText = document.createTextNode(String.fromCharCode(96 + i));
             } else if (i > 0 && j > 1 && r[i - 1][j - 2] == 1) {
-                var cellText = document.createTextNode("○");
+                var cellText = document.createTextNode(" ○ ");
+            } else if (j == 0) {
+                var cellText = document.createTextNode("　　　");
             } else {
-                var cellText = document.createTextNode("　");
+                var cellText = document.createTextNode(" 　 ");
             }
             cell.appendChild(cellText);
             row.appendChild(cell);
