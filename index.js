@@ -1,5 +1,5 @@
-function is_hansha(r, n) {
-    for (let x = 0; x < n; x++) {
+function is_hansha(r) {
+    for (let x = 0; x < r.length; x++) {
         if (!r[x][x]) {
             return false;
         }
@@ -7,10 +7,10 @@ function is_hansha(r, n) {
     return true;
 }
 
-function is_kanbi(r, n) {
-    for (let x = 0; x < n; x++) {
-        for (let y = 0; y < n; y++) {
-            if (x != y && !r[x][y] == false && !r[y][x]) {
+function is_kanbi(r) {
+    for (let x = 0; x < r.length; x++) {
+        for (let y = 0; y < r[x].length; y++) {
+            if (x != y && !r[x][y] && !r[y][x]) {
                 return false;
             }
         }
@@ -18,10 +18,10 @@ function is_kanbi(r, n) {
     return true;
 }
 
-function is_suii(r, n) {
-    for (let x = 0; x < n; x++) {
-        for (let y = 0; y < n; y++) {
-            for (let z = 0; z < n; z++) {
+function is_suii(r) {
+    for (let x = 0; x < r.length; x++) {
+        for (let y = 0; y < r[x].length; y++) {
+            for (let z = 0; z < r[y].length; z++) {
                 if (r[x][y] && r[y][z] && !r[x][z]) {
                     return false;
                 }
@@ -31,9 +31,9 @@ function is_suii(r, n) {
     return true;
 }
 
-function is_hantaishou(r, n) {
-    for (let x = 0; x < n; x++) {
-        for (let y = 0; y < n; y++) {
+function is_hantaishou(r) {
+    for (let x = 0; x < r.length; x++) {
+        for (let y = 0; y < r[x].length; y++) {
             if (r[x][y] && r[y][x] && x != y) {
                 return false;
             }
@@ -42,9 +42,9 @@ function is_hantaishou(r, n) {
     return true;
 }
 
-function is_hitaishou(r, n) {
-    for (let x = 0; x < n; x++) {
-        for (let y = 0; y < n; y++) {
+function is_hitaishou(r) {
+    for (let x = 0; x < r.length; x++) {
+        for (let y = 0; y < r[x].length; y++) {
             if (r[x][y] && r[y][x]) {
                 return false;
             }
@@ -53,9 +53,9 @@ function is_hitaishou(r, n) {
     return true;
 }
 
-function is_taishou(r, n) {
-    for (let x = 0; x < n; x++) {
-        for (let y = 0; y < n; y++) {
+function is_taishou(r) {
+    for (let x = 0; x < r.length; x++) {
+        for (let y = 0; y < r[x].length; y++) {
             if (r[x][y] && !r[y][x]) {
                 return false;
             }
@@ -131,11 +131,16 @@ function solve(option, n, disp) {
 window.addEventListener('DOMContentLoaded', function () {
     var button = document.getElementById('run');
     button.addEventListener('click', function () {
-        var element = document.getElementsByClassName('tmp');
-        for (let i = 0; i < element.length; i++) {
-            element[i].remove();
+        while (true) {
+            var element = document.getElementsByClassName('tmp');
+            if (element.length == 0) {
+                break;
+            } else {
+                for (let i = 0; i < element.length; i++) {
+                    element[i].remove();
+                }
+            }
         }
-
         var n = document.getElementById('n_size').value;
         var option = new Array(6);
         option[0] = document.getElementById('hansha').value;
@@ -145,17 +150,11 @@ window.addEventListener('DOMContentLoaded', function () {
         option[4] = document.getElementById('hitaishou').value;
         option[5] = document.getElementById('taishou').value;
         var dis = document.getElementById('r_display').value;
-        for (let i = 0; i < element.length; i++) {
-            element[i].remove();
-        }
         var disp = 0;
         if (dis == 'yes') {
             disp--;
         } else if (dis == 'five') {
             disp = 5;
-        }
-        for (let i = 0; i < element.length; i++) {
-            element[i].remove();
         }
         document.getElementById('res').innerText = solve(option, n, disp);
         document.getElementById('res_from').innerText = 1 << (n * n);
