@@ -1,0 +1,34 @@
+#sitename {
+    font-size: 2em;
+    color: teal;
+}
+
+li {
+    line-height: 180%;
+    font-size: 100%;
+}
+
+.container {
+    margin: auto;
+    width: 100%;
+    max-width: 800px;
+}
+
+#res {
+    font-size: 120%;
+    font-weight: bold;
+    color: teal;
+}
+
+button {
+    background: white;
+    color: teal;
+    font-weight: bold;
+}
+
+table {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;    
+    border: none;
+}

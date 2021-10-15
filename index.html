@@ -1,35 +1,143 @@
 <!DOCTYPE html>
-<!-- sample file -->
 <html>
 
 <head>
     <meta charset="utf-8">
-    <title>TOP | Sample Website</title>
-    <link rel="stylesheet" href="template.css">
-    <style>
-        .fav_number_box {
-            color: palevioletred;
-        }
-    </style>
+    <title>
+        二項関係の全列挙
+    </title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <div id="sitename">Sample Website</div>
+    <div id="sitename">
+        二項関係の全列挙
+    </div>
     <nav>
         <ul>
-            <li><a href="./">TOP</a></li>
-            <li><a href="aboutme.html">About Me</a></li>
+            <li>
+                <a href="./">
+                    TOP
+                </a>
+            </li>
+            <li>
+                <a href="./modeling_A.html">
+                    用語の説明
+                </a>
+            </li>
         </ul>
     </nav>
     <hr>
     <div class="container">
-        <h1>TOP</h1>
-        <p>トップページです。</p>
-        <p>このサイトを気に入っていただけたら、いいね！ボタンを押してください。</p>
+        <h1>
+            TOP
+        </h1>
+        <p>
+            与えられた条件を満たす二項関係の種別（選好の布置）を数え上げます。
+        </p>
+        <p>
+            実行ボタンの押下で計算を行います。
+            選択肢の数が4以上になると表示が遅れることがあります。
+        </p>
+        <br>
+        <h2>
+            計算する範囲
+        </h2>
+        <ul>
+            <li>
+                選択肢の数&emsp;
+                <select name="n_size" id="n_size">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3" selected>3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </li>
+        </ul>
+        <h2>
+            性質に関する条件
+        </h2>
+        <ul>
+            <li>
+                反射性&emsp;&emsp;
+                <select name="hansha" id="hansha">
+                    <option value="must">を満たす</option>
+                    <option value="neutral" selected>は問わない</option>
+                    <option value="must_not">を満たさない</option>
+                </select>
+            </li>
+            <li>
+                完備性&emsp;&emsp;
+                <select name="kanbi" id="kanbi">
+                    <option value="must">を満たす</option>
+                    <option value="neutral" selected>は問わない</option>
+                    <option value="must_not">を満たさない</option>
+                </select>
+            </li>
+            <li>
+                推移性&emsp;&emsp;
+                <select name="suii" id="suii">
+                    <option value="must">を満たす</option>
+                    <option value="neutral" selected>は問わない</option>
+                    <option value="must_not">を満たさない</option>
+                </select>
+            </li>
+            <li>
+                反対称性&emsp;
+                <select name="hantaishou" id="hantaishou">
+                    <option value="must">を満たす</option>
+                    <option value="neutral" selected>は問わない</option>
+                    <option value="must_not">を満たさない</option>
+                </select>
+            </li>
+            <li>
+                非対称性&emsp;
+                <select name="hitaishou" id="hitaishou">
+                    <option value="must">を満たす</option>
+                    <option value="neutral" selected>は問わない</option>
+                    <option value="must_not">を満たさない</option>
+                </select>
+            </li>
+            <li>
+                対称性&emsp;&emsp;
+                <select name="taishou" id="taishou">
+                    <option value="must">を満たす</option>
+                    <option value="neutral" selected>は問わない</option>
+                    <option value="must_not">を満たさない</option>
+                </select>
+            </li>
+        </ul>
+        <h2>
+            出力設定
+        </h2>
+        <ul>
+            <li>
+                条件を満たす選好の布置の表示&emsp;
+                <select name="r_display" id="r_display">
+                    <option value="yes">全て</option>
+                    <option value="five" selected>最初の5つのみ</option>
+                    <option value="no">表示しない</option>
+                </select>
+            </li>
+        </ul>
         <div>
-            <button id="fav_btn">いいね！</button>
-            <span class="fav_number_box">❤ <span id="fav_number">334</span></span>
+            <button id="run">
+                &emsp;実行&emsp;
+            </button>
         </div>
+        <br>
+
+        <hr>
+        <h2>
+            計算結果
+        </h2>
+        可能な二項関係の種別：&nbsp;<span id="res">0</span>&nbsp;通り
+        （&nbsp;<span id="res_from">0</span>&nbsp;通り中）
+        <h3>
+
+            満たす選考の布置の列挙（出力を指定した場合のみ）
+        </h3>
     </div>
     <script src="index.js"></script>
 </body>
