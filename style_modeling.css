@@ -1,0 +1,31 @@
+body {
+    font-family: sans-serif;
+}
+
+#sitename {
+    font-size: 2em;
+    color: teal;
+}
+
+.container {
+    margin: auto;
+    width: 100%;
+    max-width: 800px;
+}
+
+li {
+    line-height: 180%;
+    font-size: 100%;
+}
+
+table, td, th {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;    
+    border-collapse: collapse;
+    border:1px solid;
+}
+
+#nomark {
+    list-style: none;
+}
