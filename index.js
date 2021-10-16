@@ -69,27 +69,24 @@ function r_disp(r, num) {
     var fin = document.createElement('p');
     fin.className = 'tmp';
     var tbl = document.createElement('table');
+    tbl.setAttribute('border', '1');
     var tblBody = document.createElement('tbody');
     for (let i = 0; i < r.length + 1; i++) {
         var row = document.createElement('tr');
-        for (let j = 0; j < r.length + 2; j++) {
+        for (let j = 0; j < r.length + 1; j++) {
             var cell = document.createElement('td');
             if (i == 0) {
                 if (j == 0) {
                     var cellText = document.createTextNode("No. " + num);
-                } else if (j == 1) {
-                    var cellText = document.createTextNode("");
                 } else {
-                    var cellText = document.createTextNode(" " + String.fromCharCode(95 + j) + " ");
+                    var cellText = document.createTextNode(String.fromCharCode(65344 + j));
                 }
-            } else if (i != 0 && j == 1) {
-                var cellText = document.createTextNode(String.fromCharCode(96 + i));
-            } else if (i > 0 && j > 1 && r[i - 1][j - 2] == 1) {
-                var cellText = document.createTextNode(" ○ ");
-            } else if (j == 0) {
-                var cellText = document.createTextNode("　　　");
+            } else if (i != 0 && j == 0) {
+                var cellText = document.createTextNode(String.fromCharCode(65344 + i));
+            } else if (i > 0 && j > 0 && r[i - 1][j - 1] == 1) {
+                var cellText = document.createTextNode("○");
             } else {
-                var cellText = document.createTextNode(" 　 ");
+                var cellText = document.createTextNode("");
             }
             cell.appendChild(cellText);
             row.appendChild(cell);
@@ -101,7 +98,6 @@ function r_disp(r, num) {
     display[0].appendChild(fin);
 }
 
-
 function solve(option, n, disp) {
     var ans = 0;
     for (let i = 0; i < 1 << (n * n); i++) {
@@ -111,7 +107,7 @@ function solve(option, n, disp) {
         }
         for (let j = 0; j < n; j++) {
             for (let k = 0; k < n; k++) {
-                r[j][k] = (i >> (j * n + k)) % 2;
+                r[j][k] = (i >> (j * n + k)) & 1;
             }
         }
         var rel = [is_hansha(r), is_kanbi(r), is_suii(r), is_hantaishou(r), is_hitaishou(r), is_taishou(r)];
